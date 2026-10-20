@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172e2b">
+<title>ШОС — сотрудничество без границ</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --bg:#f5f3ed;
+  --paper:#fffefa;
+  --dark:#172e2b;
+  --green:#547767;
+  --gold:#c89a62;
+  --muted:#747c74;
+  --border:#e3e1d7;
+}
+
+* { box-sizing:border-box; }
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--dark);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.7;
+}
+
+a { color:inherit; text-decoration:none; }
+
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(245,243,237,.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+
+nav {
+  max-width:1200px;
+  min-height:72px;
+  margin:auto;
+  padding:12px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.logo {
+  font-size:16px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.logo span { color:var(--green); }
+
+.links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:17px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.links a:hover { color:var(--green); }
+
+.menu {
+  display:none;
+  padding:8px 12px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:8px;
+}
+
+.progress {
+  height:3px;
+  width:0;
+  background:var(--gold);
+}
+
+.container {
+  max-width:1150px;
+  padding:0 22px;
+  margin:auto;
+}
+
+h1,h2,h3 {
+  font-family:'Playfair Display',Georgia,serif;
+  line-height:1.15;
+}
+
+h1 {
+  font-size:clamp(43px,6vw,76px);
+  letter-spacing:-1.5px;
+  margin:20px 0;
+}
+
+h1 em { color:var(--green); }
+
+h2 {
+  font-size:clamp(32px,4vw,48px);
+  margin:12px 0 20px;
+}
+
+h3 { font-size:25px; }
+
+.eyebrow {
+  color:var(--green);
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.intro {
+  color:var(--muted);
+  font-size:16px;
+}
+
+.hero {
+  min-height:610px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:50px;
+  padding-top:55px;
+  padding-bottom:65px;
+}
+
+.hero-photo {
+  min-height:430px;
+  border-radius:170px 170px 18px 18px;
+  overflow:hidden;
+  background:#d8dfd4;
+}
+
+.hero-photo img {
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  display:block;
+}
+
+.btn {
+  display:inline-block;
+  background:var(--dark);
+  color:white;
+  padding:13px 20px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:700;
+  margin:10px 8px 0 0;
+  border:1px solid var(--dark);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn:hover { transform:translateY(-2px); }
+
+.btn.light {
+  background:transparent;
+  color:var(--dark);
+  border-color:var(--border);
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:24px 0;
+}
+
+.stat {
+  padding:5px 20px;
+  border-right:1px solid var(--border);
+}
+
+.stat:last-child { border:0; }
+
+.stat strong {
+  display:block;
+  color:var(--green);
+  font:600 30px 'Playfair Display',serif;
+}
+
+.stat span {
+  color:var(--muted);
+  font-size:12px;
+}
+
+section { padding:82px 0; }
+
+.section-head {
+  max-width:760px;
+  margin-bottom:35px;
+}
+
+.number {
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.photo-card {
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+
+.photo-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(23,46,43,.1);
+}
+
+.photo-card img {
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  display:block;
+  background:#dfe5db;
+}
+
+.photo-card .body { padding:22px; }
+
+.photo-card h3 { margin:0 0 10px; }
+
+.photo-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.feature {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:38px;
+  align-items:center;
+  margin-top:30px;
+}
+
+.feature img {
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  border-radius:16px;
+  display:block;
+  background:#dfe5db;
+}
+
+.caption {
+  font-size:11px;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.paper {
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:27px;
+}
+
+.list { padding-left:20px; }
+
+.list li { margin:10px 0; }
+
+.dark {
+  background:var(--dark);
+  color:white;
+}
+
+.dark .intro { color:#c5d0c7; }
+
+.dark .number { color:var(--gold); }
+
+.dark .photo-card {
+  background:#203b36;
+  border-color:#345149;
+}
+
+.dark .photo-card p { color:#c5d0c7; }
+
+.quote {
+  border-left:3px solid var(--gold);
+  padding:8px 0 8px 22px;
+  font:24px/1.5 'Playfair Display',serif;
+  margin:35px 0;
+}
+
+.quote small {
+  display:block;
+  margin-top:12px;
+  color:var(--muted);
+  font:12px 'DM Sans',sans-serif;
+}
+
+.member-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.member {
+  background:var(--paper);
+  border:1px solid var(--border);
+  padding:17px 10px;
+  border-radius:12px;
+  text-align:center;
+  font-size:13px;
+  font-weight:600;
+}
+
+.member .flag {
+  display:block;
+  font-size:33px;
+  margin-bottom:8px;
+}
+
+.timeline {
+  border-left:2px solid var(--gold);
+  margin:30px 0 0 8px;
+  padding-left:25px;
+}
+
+.event {
+  position:relative;
+  margin-bottom:28px;
+}
+
+.event:before {
+  content:"";
+  position:absolute;
+  left:-32px;
+  top:7px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--gold);
+}
+
+.event strong {
+  color:var(--green);
+  font-size:19px;
+}
+
+.event p {
+  margin:5px 0;
+  color:var(--muted);
+}
+
+.quiz {
+  max-width:820px;
+  margin:auto;
+}
+
+.question {
+  padding:22px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.question h3 {
+  font:600 17px 'DM Sans',sans-serif;
+}
+
+.answer {
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:12px;
+  margin:8px 0;
+  background:var(--paper);
+  color:var(--dark);
+  border:1px solid var(--border);
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.answer:hover { border-color:var(--green); }
+
+.answer.correct { background:#e0eee1; }
+.answer.wrong { background:#f5e0d9; }
+.answer:disabled { cursor:default; }
+
+.result {
+  display:none;
+  background:#e9eee5;
+  border-radius:10px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.source {
+  background:#e9e8df;
+  padding:28px;
+  border-radius:15px;
+}
+
+.source p { color:#59645c; }
+
+.source a {
+  text-decoration:underline;
+  color:var(--green);
+}
+
+footer {
+  background:#10231f;
+  color:white;
+  padding:35px 0;
+}
+
+footer p {
+  color:#a9b8ae;
+  font-size:12px;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(15px);
+  transition:opacity .6s,transform .6s;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+#top {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:none;
+  border:0;
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  background:var(--dark);
+  color:white;
+  cursor:pointer;
+}
+
+@media(max-width:850px) {
+  .hero,.feature { grid-template-columns:1fr; }
+  .hero-photo,.hero-photo img {
+    height:350px;
+    min-height:350px;
+  }
+
+  .grid { grid-template-columns:repeat(2,1fr); }
+  .member-grid { grid-template-columns:repeat(3,1fr); }
+
+  .links {
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    padding:20px;
+    background:var(--paper);
+    flex-direction:column;
+  }
+
+  .links.open { display:flex; }
+  .menu { display:block; }
+}
+
+@media(max-width:550px) {
+  .grid { grid-template-columns:1fr; }
+  .member-grid { grid-template-columns:repeat(2,1fr); }
+
+  .stats { gap:0; }
+  .stat { padding:5px 8px; }
+  .stat strong { font-size:23px; }
+  .stat span { font-size:10px; }
+
+  section { padding:60px 0; }
+  .photo-card img { height:230px; }
+
+  .logo { font-size:13px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+  .reveal { opacity:1; transform:none; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="#home">ШОС <span>· СОТРУДНИЧЕСТВО</span></a>
+
+    <div class="links" id="links">
+      <a href="#history">История</a>
+      <a href="#members">Участники</a>
+      <a href="#goals">Цели</a>
+      <a href="#security">Безопасность</a>
+      <a href="#economy">Экономика</a>
+      <a href="#kyrgyzstan">Кыргызстан</a>
+      <a href="#quiz">Тест</a>
+    </div>
+
+    <button class="menu" id="menu" aria-label="Открыть меню">☰</button>
+  </nav>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+
+<!-- 1. Главный экран -->
+<section class="container hero" id="home">
+  <div class="reveal">
+    <div class="eyebrow">Международное сотрудничество</div>
+    <h1>Общие цели.<br>Общий <em>диалог.</em></h1>
+
+    <p class="intro">
+      Шанхайская организация сотрудничества — международная организация,
+      объединяющая государства Евразии для взаимодействия в области
+      безопасности, экономики, культуры и развития.
+    </p>
+
+    <a class="btn" href="#history">Изучить ШОС →</a>
+    <a class="btn light" href="#quiz">Проверить знания</a>
+
+    <p class="caption">Шанхайская организация сотрудничества · ШОС</p>
+  </div>
+
+  <div class="hero-photo reveal">
+    <img
+      src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=85"
+      alt="Здание и архитектура международного политического центра"
+      fetchpriority="high">
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats reveal">
+    <div class="stat">
+      <strong>2001</strong>
+      <span>Год создания организации</span>
+    </div>
+    <div class="stat">
+      <strong>10</strong>
+      <span>Государств-членов</span>
+    </div>
+    <div class="stat">
+      <strong>2</strong>
+      <span>Официальных языка: русский и китайский</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Что такое ШОС -->
+<section class="container" id="about">
+  <div class="section-head reveal">
+    <div class="number">01 / ОБЩАЯ ИНФОРМАЦИЯ</div>
+    <h2>Что такое ШОС?</h2>
+    <p class="intro">
+      Шанхайская организация сотрудничества — международная организация,
+      созданная для укрепления доверия между государствами и развития
+      многостороннего сотрудничества в Евразии.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80"
+           alt="Архитектура государственных учреждений" loading="lazy">
+      <div class="body">
+        <h3>Международный диалог</h3>
+        <p>Государства обсуждают общие проблемы и согласуют направления взаимодействия.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80"
+           alt="Люди работают совместно" loading="lazy">
+      <div class="body">
+        <h3>Совместная работа</h3>
+        <p>Страны развивают сотрудничество в разных сферах, представляющих взаимный интерес.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+           alt="Современное деловое пространство" loading="lazy">
+      <div class="body">
+        <h3>Общее развитие</h3>
+        <p>В центре внимания — устойчивое развитие, добрососедство и взаимная выгода.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 3. История -->
+<section class="dark" id="history">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="number">02 / ИСТОРИЯ СОЗДАНИЯ</div>
+      <h2>Как появилась ШОС?</h2>
+      <p class="intro">
+        Организация выросла из переговоров соседних государств о доверии,
+        безопасности и сотрудничестве в приграничных районах.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <div>
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=85"
+             alt="Горный ландшафт Евразии" loading="lazy">
+        <p class="caption">Евразия — пространство взаимодействия государств.</p>
+      </div>
+
+      <div class="paper" style="color:var(--dark)">
+        <div class="timeline">
+          <div class="event">
+            <strong>1996 год</strong>
+            <p>Начало процесса «Шанхайская пятёрка» и укрепление доверия в приграничных районах.</p>
+          </div>
+
+          <div class="event">
+            <strong>1997 год</strong>
+            <p>Соглашение о взаимном сокращении вооружённых сил в приграничных районах.</p>
+          </div>
+
+          <div class="event">
+            <strong>15 июня 2001 года</strong>
+            <p>В Шанхае объявлено о создании Шанхайской организации сотрудничества. В число основателей вошли шесть государств.</p>
+          </div>
+
+          <div class="event">
+            <strong>2002–2003 годы</strong>
+            <p>Подписана Хартия ШОС, определившая цели, принципы и структуру организации; она вступила в силу в 2003 году.</p>
+          </div>
+
+          <div class="event">
+            <strong>2017–2024 годы</strong>
+            <p>К организации присоединились Индия и Пакистан, затем Иран и Беларусь.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Государства-члены -->
+<section class="container" id="members">
+  <div class="section-head reveal">
+    <div class="number">03 / УЧАСТНИКИ</div>
+    <h2>Государства-члены ШОС</h2>
+    <p class="intro">
+      По состоянию на 2026 год в организации десять государств-членов.
+      Они отличаются историей, языками, культурой и экономикой,
+      но участвуют в общем механизме сотрудничества.
+    </p>
+  </div>
+
+  <div class="member-grid reveal">
+    <div class="member"><span class="flag">🇧🇾</span>Беларусь</div>
+    <div class="member"><span class="flag">🇮🇳</span>Индия</div>
+    <div class="member"><span class="flag">🇮🇷</span>Иран</div>
+    <div class="member"><span class="flag">🇰🇿</span>Казахстан</div>
+    <div class="member"><span class="flag">🇨🇳</span>Китай</div>
+    <div class="member"><span class="flag">🇰🇬</span>Кыргызстан</div>
+    <div class="member"><span class="flag">🇵🇰</span>Пакистан</div>
+    <div class="member"><span class="flag">🇷🇺</span>Россия</div>
+    <div class="member"><span class="flag">🇹🇯</span>Таджикистан</div>
+    <div class="member"><span class="flag">🇺🇿</span>Узбекистан</div>
+  </div>
+
+  <div class="feature reveal">
+    <div>
+      <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1100&q=85"
+           alt="Современный город Евразии" loading="lazy">
+      <p class="caption">Города и транспорт связывают экономические центры региона.</p>
+    </div>
+
+    <div>
+      <h3>Разнообразие государств</h3>
+      <p class="intro">
+        Участники ШОС имеют разные политические системы, размеры населения,
+        природные ресурсы и экономические возможности.
+      </p>
+      <p class="intro">
+        Организация предоставляет площадку для переговоров и согласования
+        общих интересов с учётом суверенитета каждого государства.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Цели -->
+<section class="dark" id="goals">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="number">04 / ОСНОВНЫЕ ЦЕЛИ</div>
+      <h2>Для чего создана организация?</h2>
+      <p class="intro">
+        Цели ШОС включают укрепление доверия, региональную стабильность,
+        взаимовыгодное сотрудничество и развитие отношений между странами.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+             alt="Люди взаимодействуют друг с другом" loading="lazy">
+        <div class="body">
+          <h3>Доверие и добрососедство</h3>
+          <p>Развитие дружеских отношений и взаимного уважения между государствами.</p>
+        </div>
+      </article>
+
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+             alt="Рабочее совещание" loading="lazy">
+        <div class="body">
+          <h3>Диалог</h3>
+          <p>Обсуждение региональных проблем и поиск согласованных решений.</p>
+        </div>
+      </article>
+
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=900&q=80"
+             alt="Финансовые и экономические процессы" loading="lazy">
+        <div class="body">
+          <h3>Развитие</h3>
+          <p>Содействие экономическому росту и социальному и культурному взаимодействию.</p>
+        </div>
+      </article>
+    </div>
+
+    <blockquote class="quote reveal">
+      Главный принцип — развивать сотрудничество при уважении суверенитета
+      и интересов каждого государства.
+    </blockquote>
+  </div>
+</section>
+
+<!-- 6. Безопасность -->
+<section class="container" id="security">
+  <div class="section-head reveal">
+    <div class="number">05 / РЕГИОНАЛЬНАЯ БЕЗОПАСНОСТЬ</div>
+    <h2>Безопасность и стабильность</h2>
+    <p class="intro">
+      Одно из основных направлений работы ШОС — взаимодействие государств
+      по вопросам региональной безопасности и противодействия общим угрозам.
+    </p>
+  </div>
+
+  <div class="feature reveal">
+    <div>
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1100&q=85"
+           alt="Глобальные связи и цифровые сети" loading="lazy">
+      <p class="caption">Современные угрозы могут пересекать государственные границы.</p>
+    </div>
+
+    <div>
+      <h3>Направления взаимодействия</h3>
+      <ul class="list">
+        <li>Борьба с терроризмом, сепаратизмом и экстремизмом.</li>
+        <li>Противодействие транснациональной организованной преступности.</li>
+        <li>Обмен информацией и проведение консультаций.</li>
+        <li>Сотрудничество компетентных государственных органов.</li>
+      </ul>
+
+      <p class="intro">
+        В Ташкенте действует Исполнительный комитет Региональной
+        антитеррористической структуры ШОС.
+      </p>
+
+      <p class="intro">
+        Важно: ШОС не является военным оборонительным альянсом.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Экономика -->
+<section class="container" id="economy">
+  <div class="section-head reveal">
+    <div class="number">06 / ЭКОНОМИКА И ТРАНСПОРТ</div>
+    <h2>Торговля, транспорт и развитие</h2>
+    <p class="intro">
+      Экономическое взаимодействие помогает странам обсуждать торговлю,
+      инвестиции, транспортные маршруты и другие направления совместной работы.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=900&q=80"
+           alt="Грузовые контейнеры в международной торговле" loading="lazy">
+      <div class="body">
+        <h3>Торговля</h3>
+        <p>Обсуждение условий взаимной торговли и экономических связей между странами.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=900&q=80"
+           alt="Железная дорога как транспортный маршрут" loading="lazy">
+      <div class="body">
+        <h3>Транспорт</h3>
+        <p>Развитие транспортной связанности и обсуждение логистических возможностей.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+           alt="Анализ экономических данных" loading="lazy">
+      <div class="body">
+        <h3>Инвестиции</h3>
+        <p>Создание условий для обсуждения совместных проектов и деловых контактов.</p>
+      </div>
+    </article>
+  </div>
+
+  <p class="intro reveal" style="margin-top:25px">
+    Экономические инициативы требуют согласования между участниками.
+    Членство в ШОС само по себе не означает автоматического создания
+    единого рынка или таможенного союза.
+  </p>
+</section>
+
+<!-- 8. Культура и образование -->
+<section class="dark" id="culture">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="number">07 / КУЛЬТУРА И ОБРАЗОВАНИЕ</div>
+      <h2>Народная дипломатия</h2>
+      <p class="intro">
+        Сотрудничество включает культурные мероприятия, образовательные
+        обмены, научные контакты и общение между людьми разных стран.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80"
+             alt="Студенты вместе занимаются" loading="lazy">
+        <div class="body">
+          <h3>Образование</h3>
+          <p>Академические контакты и обмен знаниями между образовательными учреждениями.</p>
+        </div>
+      </article>
+
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80"
+             alt="Люди участвуют в общественном мероприятии" loading="lazy">
+        <div class="body">
+          <h3>Культура</h3>
+          <p>Знакомство с традициями, искусством и историей других народов.</p>
+        </div>
+      </article>
+
+      <article class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80"
+             alt="Люди разных поколений общаются" loading="lazy">
+        <div class="body">
+          <h3>Общение</h3>
+          <p>Межкультурный диалог помогает лучше понимать особенности соседних стран.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Кыргызстан -->
+<section class="container" id="kyrgyzstan">
+  <div class="section-head reveal">
+    <div class="number">08 / КЫРГЫЗСТАН И ШОС</div>
+    <h2>Значение организации для Кыргызстана</h2>
+    <p class="intro">
+      Кыргызстан — один из шести государств-основателей ШОС.
+      Участие в организации предоставляет стране площадку для регионального
+      диалога и обсуждения общих задач.
+    </p>
+  </div>
+
+  <div class="feature reveal">
+    <div>
+      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1100&q=85"
+           alt="Архитектура Центральной Азии" loading="lazy">
+      <p class="caption">Центральная Азия — важное пространство регионального сотрудничества.</p>
+    </div>
+
+    <div>
+      <h3>Основные интересы Кыргызстана</h3>
+      <ul class="list">
+        <li>Поддержание региональной безопасности.</li>
+        <li>Развитие торговых и экономических связей.</li>
+        <li>Улучшение транспортной связанности.</li>
+        <li>Образовательные и культурные обмены.</li>
+        <li>Сотрудничество с соседними государствами.</li>
+      </ul>
+      <p class="intro">
+        Результаты зависят от конкретных договорённостей, проектов
+        и совместных решений государств-участников.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Принципы -->
+<section class="container" id="principles">
+  <div class="section-head reveal">
+    <div class="number">09 / ПРИНЦИПЫ РАБОТЫ</div>
+    <h2>Что такое «шанхайский дух»?</h2>
+    <p class="intro">
+      Этим выражением обозначают подход к отношениям между участниками,
+      основанный на взаимном доверии, уважении, равноправии и стремлении
+      к совместному развитию.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+           alt="Сотрудничество и взаимопонимание" loading="lazy">
+      <div class="body">
+        <h3>Взаимное доверие</h3>
+        <p>Стремление укреплять добрососедские отношения между государствами.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+           alt="Переговоры и обсуждение решений" loading="lazy">
+      <div class="body">
+        <h3>Равноправный диалог</h3>
+        <p>Обсуждение общих вопросов с уважением к позициям участников.</p>
+      </div>
+    </article>
+
+    <article class="photo-card reveal">
+      <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
+           alt="Открытый горизонт, символ общего будущего" loading="lazy">
+      <div class="body">
+        <h3>Общее развитие</h3>
+        <p>Стремление к устойчивому развитию и взаимовыгодным результатам.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 11. Заключение -->
+<section class="dark" id="conclusion">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="number">10 / ЗАКЛЮЧЕНИЕ</div>
+      <h2>Почему ШОС важна?</h2>
+      <p class="intro">
+        ШОС объединяет страны с разными интересами и возможностями.
+        Её значение заключается в создании постоянной площадки
+        для диалога и практического сотрудничества.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <div>
+        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1100&q=85"
+             alt="Глобус и географические связи" loading="lazy">
+        <p class="caption">Международные отношения связывают разные регионы мира.</p>
+      </div>
+
+      <div>
+        <h3>Основные выводы</h3>
+        <ul class="list">
+          <li>ШОС создана 15 июня 2001 года.</li>
+          <li>Организация объединяет десять государств-членов.</li>
+          <li>Одно из главных направлений — региональная безопасность.</li>
+          <li>Развиваются экономические, культурные и образовательные контакты.</li>
+          <li>Кыргызстан является одним из государств-основателей.</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="quote reveal">
+      Сотрудничество начинается с диалога, взаимного уважения
+      и готовности искать общие решения.
+    </blockquote>
+  </div>
+</section>
+
+<!-- 12. Тест -->
+<section style="background:#eeece3" id="quiz">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="number">11 / ПРОВЕРКА ЗНАНИЙ</div>
+      <h2>Проверь себя</h2>
+      <p class="intro">
+        Ответь на пять вопросов по материалу сайта.
+      </p>
+    </div>
+
+    <div class="paper quiz reveal">
+      <div id="questions"></div>
+      <button class="btn" id="check">Проверить ответы →</button>
+      <button class="btn light" id="restart">Пройти заново</button>
+      <div class="result" id="result" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Источники -->
+<section class="container" id="sources">
+  <div class="source reveal">
+    <div class="eyebrow">Источники информации</div>
+    <h2 style="font-size:32px">О Шанхайской организации сотрудничества</h2>
+    <p>
+      Содержание сайта подготовлено на основе официальных материалов ШОС
+      и справочной информации о её истории, целях и структуре.
+    </p>
+    <p><a href="https://eng.sectsco.org/" target="_blank" rel="noopener noreferrer">Официальный сайт ШОС</a></p>
+    <p><a href="https://eng.sectsco.org/20231127/1168690.html" target="_blank" rel="noopener noreferrer">История организации и ответы на вопросы</a></p>
+    <p><a href="https://eng.sectsco.org/20170109/192193.html" target="_blank" rel="noopener noreferrer">Основные цели и принципы ШОС</a></p>
+    <p class="caption">
+      Фотографии используются как иллюстрации к темам и не обязательно
+      изображают конкретные заседания ШОС. Для их загрузки нужен интернет.
+    </p>
+    <a class="btn light" href="#home">Вернуться в начало ↑</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>ШОС — сотрудничество без границ</strong>
+    <p>Образовательный сайт о международных отношениях.</p>
+  </div>
+</footer>
+
+<button id="top" aria-label="Наверх">↑</button>
+
+<script>
+const menu = document.getElementById('menu');
+const links = document.getElementById('links');
+
+menu.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+
+links.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => links.classList.remove('open'));
+});
+
+const progress = document.getElementById('progress');
+const topButton = document.getElementById('top');
+
+function updateScroll() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const value = max > 0 ? window.scrollY / max * 100 : 0;
+
+  progress.style.width = value + '%';
+  topButton.style.display = window.scrollY > 450 ? 'block' : 'none';
+}
+
+window.addEventListener('scroll', updateScroll, {passive:true});
+
+topButton.addEventListener('click', () => {
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+const revealItems = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.1});
+
+  revealItems.forEach(el => observer.observe(el));
+} else {
+  revealItems.forEach(el => el.classList.add('visible'));
+}
+
+const quizData = [
+  {
+    q:'1. В каком году была создана ШОС?',
+    a:['1996 году','2001 году','2010 году'],
+    c:1
+  },
+  {
+    q:'2. Сколько государств-членов входит в ШОС?',
+    a:['6','8','10'],
+    c:2
+  },
+  {
+    q:'3. Каковы основные направления работы ШОС?',
+    a:[
+      'Только спорт',
+      'Безопасность, экономика и другие сферы сотрудничества',
+      'Только туризм'
+    ],
+    c:1
+  },
+  {
+    q:'4. Какую роль играет Кыргызстан?',
+    a:[
+      'Является одним из государств-основателей',
+      'Не участвует в организации',
+      'Является только наблюдателем'
+    ],
+    c:0
+  },
+  {
+    q:'5. Является ли ШОС оборонительным военным альянсом?',
+    a:[
+      'Да, это оборонительный военный альянс',
+      'Нет, организация не имеет атрибутов оборонительного альянса',
+      'Это исключительно спортивная организация'
+    ],
+    c:1
+  }
+];
+
+const questions = document.getElementById('questions');
+const result = document.getElementById('result');
+let finished = false;
+
+function renderQuiz() {
+  finished = false;
+  result.style.display = 'none';
+  result.textContent = '';
+
+  document.getElementById('check').disabled = false;
+  questions.innerHTML = '';
+
+  quizData.forEach((item, qi) => {
+    const block = document.createElement('div');
+    block.className = 'question';
+
+    const title = document.createElement('h3');
+    title.textContent = item.q;
+    block.appendChild(title);
+
+    item.a.forEach((answer, ai) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'answer';
+      button.textContent = answer;
+      button.dataset.q = qi;
+      button.dataset.a = ai;
+
+      button.addEventListener('click', () => {
+        if (finished) return;
+
+        block.querySelectorAll('.answer').forEach(b => {
+          b.removeAttribute('data-selected');
+          b.style.borderColor = '';
+        });
+
+        button.dataset.selected = 'true';
+        button.style.borderColor = '#547767';
+      });
+
+      block.appendChild(button);
+    });
+
+    questions.appendChild(block);
+  });
+}
+
+document.getElementById('check').addEventListener('click', () => {
+  if (finished) return;
+
+  const selected = questions.querySelectorAll('[data-selected="true"]');
+
+  if (selected.length !== quizData.length) {
+    result.style.display = 'block';
+    result.textContent = 'Ответь на все пять вопросов, чтобы проверить результат.';
+    return;
+  }
+
+  finished = true;
+  let score = 0;
+
+  quizData.forEach((item, qi) => {
+    const block = questions.children[qi];
+    const buttons = block.querySelectorAll('.answer');
+    const chosen = [...buttons].find(b => b.dataset.selected === 'true');
+
+    buttons.forEach(b => {
+      b.disabled = true;
+
+      if (Number(b.dataset.a) === item.c) {
+        b.classList.add('correct');
+      }
+    });
+
+    if (Number(chosen.dataset.a) === item.c) {
+      score++;
+    } else {
+      chosen.classList.add('wrong');
+    }
+  });
+
+  result.style.display = 'block';
+
+  const heading = document.createElement('strong');
+  heading.textContent = `Результат: ${score} из ${quizData.length}`;
+  result.appendChild(heading);
+
+  const message = document.createElement('p');
+  message.textContent = score === 5
+    ? 'Отлично! Ты хорошо усвоил материал о ШОС.'
+    : score >= 3
+      ? 'Хороший результат. Повтори разделы, в которых сомневался.'
+      : 'Повтори материал сайта и попробуй ещё раз.';
+
+  result.appendChild(message);
+  document.getElementById('check').disabled = true;
+});
+
+document.getElementById('restart').addEventListener('click', renderQuiz);
+
+renderQuiz();
+updateScroll();
+</script>
+
+</body>
+</html>
